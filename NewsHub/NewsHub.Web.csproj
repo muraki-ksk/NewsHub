@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <BlazorDisableThrowNavigationException>true</BlazorDisableThrowNavigationException>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\NewsHub.Application\NewsHub.Application.csproj" />
+    <ProjectReference Include="..\NewsHub.Infrastructure\NewsHub.Infrastructure.csproj" />
+  </ItemGroup>
+
+</Project>

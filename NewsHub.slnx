@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="NewsHub.Application/NewsHub.Application.csproj" Id="2dafbe96-e53e-4894-96b0-586758eb94e3" />
+  <Project Path="NewsHub.Domain/NewsHub.Domain.csproj" Id="7944de1e-80a8-4764-a8e0-d62d2e76552e" />
+  <Project Path="NewsHub.Infrastructure/NewsHub.Infrastructure.csproj" Id="d6398d70-6bbb-4c9b-9642-720096148aa0" />
+  <Project Path="NewsHub/NewsHub.Web.csproj" />
+</Solution>
