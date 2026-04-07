@@ -1,10 +1,16 @@
-using NewsHub.Components;
+using NewsHub.Domain.Interfaces;
+using NewsHub.Infrastructure.Services;
+using NewsHub.Application.UseCases;
+using NewsHub.Web.Components;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
+
+builder.Services.AddScoped<INewsService, NewsApiService>();
+builder.Services.AddScoped<SearchNewsUseCase>();
 
 var app = builder.Build();
 

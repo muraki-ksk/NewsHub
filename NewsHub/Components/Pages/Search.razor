@@ -1,0 +1,49 @@
+﻿@page "/"
+@using NewsHub.Domain.Entities
+@using NewsHub.Application.UseCases
+@inject SearchNewsUseCase SearchNewsUseCase
+@rendermode InteractiveServer
+
+<h3>ニュース検索</h3>
+
+<div>
+    <input type="text" @bind="keyword" placeholder="キーワードを入力" />
+    <button @onclick="SearchAsync">検索</button>
+</div>
+
+@if (isLoading)
+{
+    <p>検索中...</p>
+}
+
+@if (articles != null && articles.Count > 0)
+{
+    @foreach (var article in articles)
+    {
+        <div style="border:1px solid #ccc; padding:12px; margin:8px 0; border-radius:8px;">
+            <h4><a href="@article.ArticleUrl" target="_blank">@article.Title</a></h4>
+            <p>@article.ExplanatoryText</p>
+            <small>@article.SourceName - @article.PublishedDate.ToString("yyyy/MM/dd")</small>
+        </div>
+    }
+}
+else if (articles != null && articles.Count == 0 && !isLoading)
+{
+    <p>記事が見つかりませんでした。</p>
+}
+
+@code {
+    private string keyword = "";
+    private List<NewsArticle>? articles;
+    private bool isLoading = false;
+
+    private async Task SearchAsync()
+    {
+        isLoading = true;
+        articles = null;
+
+        articles = await SearchNewsUseCase.ExecuteAsync(keyword);
+
+        isLoading = false;
+    }
+}
